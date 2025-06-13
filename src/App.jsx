@@ -4,15 +4,18 @@ import MainLayout from './layout/MainLayout';
 import Home from './pages/Home';
 
 
+
 const App = () => {
   return (
-    <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </MainLayout>
-    </Router>
+    <div className='bg-[#1E2636]'>
+      < Router >
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </MainLayout>
+      </Router >
+    </div>
   );
 };
 
