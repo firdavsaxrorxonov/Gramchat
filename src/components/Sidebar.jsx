@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { Link } from 'react-router-dom';
 import User from './User';
+import { removeAuth } from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 import ToggleSwitch from './ToggleSwitch';
 
 function Sidebar({ onToggleSettings }) {
@@ -21,6 +23,14 @@ function Sidebar({ onToggleSettings }) {
       setDarkMode(storedMode === 'true');
     }
   }, []);
+
+
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    removeAuth();
+    navigate("/login");
+  };
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
@@ -83,7 +93,7 @@ function Sidebar({ onToggleSettings }) {
         <Link
           className='text-red-500 text-lg flex items-center gap-2.5'
           to=""
-          onClick={toggleDrawer(false)}
+          onClick={handleLogout}
         >
           <IoLogOutOutline className='text-2xl' /> Chiqish
         </Link>

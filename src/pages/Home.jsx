@@ -1,8 +1,12 @@
 import React from 'react';
 import Settings from '../components/Settings';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useOutletContext } from 'react-router-dom'; // 👈 kerakli hook
 
-function Home({ showSettings, onCloseSettings }) {
+function Home() {
+  // 🔽 showSettings va onCloseSettings'ni Outlet context'dan olamiz
+  const { showSettings, onCloseSettings } = useOutletContext();
+
   return (
     <div className='bg-[#0E1621] flex items-center justify-center w-full min-h-screen relative overflow-hidden'>
       <AnimatePresence>

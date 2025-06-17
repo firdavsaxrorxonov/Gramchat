@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import Home from '../pages/Home';
+import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
   const [showSettings, setShowSettings] = useState(false);
@@ -9,10 +9,7 @@ const MainLayout = () => {
     <div className="flex min-h-screen relative">
       <Sidebar onToggleSettings={() => setShowSettings(!showSettings)} />
       <div className="w-full">
-        <Home
-          showSettings={showSettings}
-          onCloseSettings={() => setShowSettings(false)}
-        />
+        <Outlet context={{ showSettings, onCloseSettings: () => setShowSettings(false) }} />
       </div>
     </div>
   );
