@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Sidebar from '../components/Sidebar';
+import Home from '../pages/Home';
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
+  const [showSettings, setShowSettings] = useState(false);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      {children}
+    <div className="flex min-h-screen relative">
+      <Sidebar onToggleSettings={() => setShowSettings(!showSettings)} />
+      <div className="w-full">
+        <Home
+          showSettings={showSettings}
+          onCloseSettings={() => setShowSettings(false)}
+        />
+      </div>
     </div>
   );
 };
